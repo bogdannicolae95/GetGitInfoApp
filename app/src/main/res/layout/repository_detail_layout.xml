@@ -1,47 +1,297 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="@color/fw_white">
 
-        <TextView
-            android:id="@+id/repository_detail_tv"
-            android:layout_width="wrap_content"
+<LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:background="@color/fw_white">
+
+    <TextView
+        android:id="@+id/repository_detail_tv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="8dp"
+        android:text="@string/repository_detail"
+        android:textColor="@color/fw_charcoal"
+        android:textSize="24sp" />
+
+        <android.support.constraint.ConstraintLayout
+            android:id="@+id/watchers_container"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginStart="8dp"
             android:layout_marginTop="16dp"
             android:layout_marginEnd="8dp"
-            android:textSize="24sp"
-            android:text="@string/repository_detail"
-            android:textColor="@color/fw_charcoal"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            android:background="@color/charcoal_opacity"
+            android:padding="8dp">
 
-        <TextView
-            android:id="@+id/repository_full_name"
-            android:layout_width="0dp"
+            <ImageView
+                android:id="@+id/watchers_img"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:srcCompat="@drawable/ic_watchers_img" />
+
+            <TextView
+                android:id="@+id/watch_tv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:layout_marginEnd="8dp"
+                android:text="@string/watch"
+                app:layout_constraintBottom_toBottomOf="@+id/watchers_img"
+                app:layout_constraintEnd_toStartOf="@+id/watchers_count"
+                app:layout_constraintStart_toEndOf="@+id/watchers_img"
+                app:layout_constraintTop_toTopOf="@+id/watchers_img" />
+
+            <TextView
+                android:id="@+id/watchers_count"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/example_count_20"
+                android:textStyle="bold"
+                app:layout_constraintBottom_toBottomOf="@+id/watch_tv"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="@+id/watch_tv" />
+        </android.support.constraint.ConstraintLayout>
+
+
+        <android.support.constraint.ConstraintLayout
+            android:id="@+id/stars_container"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginStart="8dp"
-            android:layout_marginTop="16dp"
-            android:layout_marginEnd="8dp"
-            android:text="TextView"
-            android:textColor="@color/fw_charcoal"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/repository_detail_tv" />
-
-        <TextView
-            android:id="@+id/repository_login_name"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
             android:layout_marginEnd="8dp"
-            android:text="TextView"
-            android:textColor="@color/fw_charcoal"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="@+id/repository_full_name"
-            app:layout_constraintTop_toBottomOf="@+id/repository_full_name" />
+            android:background="@color/charcoal_opacity"
+            android:padding="8dp">
 
 
-</android.support.constraint.ConstraintLayout>
+            <ImageView
+                android:id="@+id/stars_img"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:srcCompat="@drawable/ic_stars_img" />
+
+            <TextView
+                android:id="@+id/star_tv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:layout_marginEnd="8dp"
+                android:text="@string/star"
+                app:layout_constraintBottom_toBottomOf="@+id/stars_img"
+                app:layout_constraintEnd_toStartOf="@+id/stars_count"
+                app:layout_constraintStart_toEndOf="@+id/stars_img"
+                app:layout_constraintTop_toTopOf="@+id/stars_img" />
+
+            <TextView
+                android:id="@+id/stars_count"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/example_count_20"
+                android:textStyle="bold"
+                app:layout_constraintBottom_toBottomOf="@+id/star_tv"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="@+id/star_tv" />
+        </android.support.constraint.ConstraintLayout>
+
+
+        <android.support.constraint.ConstraintLayout
+            android:id="@+id/forks_container"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="8dp"
+            android:background="@color/charcoal_opacity"
+            android:padding="8dp">
+
+
+            <ImageView
+                android:id="@+id/fork_img"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:srcCompat="@drawable/ic_fork_image" />
+
+            <TextView
+                android:id="@+id/fork_tv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:layout_marginEnd="8dp"
+                android:text="@string/fork"
+                app:layout_constraintBottom_toBottomOf="@+id/fork_img"
+                app:layout_constraintEnd_toStartOf="@+id/forks_count"
+                app:layout_constraintStart_toEndOf="@+id/fork_img"
+                app:layout_constraintTop_toTopOf="@+id/fork_img" />
+
+            <TextView
+                android:id="@+id/forks_count"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/example_count_20"
+                android:textStyle="bold"
+                app:layout_constraintBottom_toBottomOf="@+id/fork_tv"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="@+id/fork_tv" />
+        </android.support.constraint.ConstraintLayout>
+
+    <TextView
+        android:id="@+id/repository_id_tv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="16dp"
+        android:visibility="visible"
+        android:textColor="@color/fw_charcoal"
+        android:text="@string/repository_id" />
+
+    <TextView
+        android:id="@+id/repository_id_value"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="8dp"
+        android:textColor="@color/fw_charcoal"
+        android:ellipsize="end"
+        android:maxLines="1" />
+
+    <TextView
+        android:id="@+id/repository_full_name_tv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:textColor="@color/fw_charcoal"
+        android:layout_marginTop="8dp"
+        android:text="@string/repository_full_name" />
+
+    <TextView
+        android:id="@+id/repository_full_name_value"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="8dp"
+        android:textColor="@color/fw_charcoal"
+        android:ellipsize="end"
+        android:maxLines="1" />
+
+    <TextView
+        android:id="@+id/repository_login_name_tv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:textColor="@color/fw_charcoal"
+        android:text="@string/repository_user_name" />
+
+    <TextView
+        android:id="@+id/repository_login_name_value"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="8dp"
+        android:textColor="@color/fw_charcoal"
+        android:ellipsize="end"
+        android:maxLines="1" />
+
+    <TextView
+        android:id="@+id/repository_url_tv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:textColor="@color/fw_charcoal"
+        android:layout_marginTop="8dp"
+        android:text="@string/repository_url" />
+
+    <TextView
+        android:id="@+id/repository_url_value"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="8dp"
+        android:textColor="@color/fw_charcoal"
+        android:clickable="true"
+        android:linksClickable="true"
+        android:textColorLink="@color/colorPrimary"
+        android:autoLink="web"
+        android:ellipsize="end"
+        android:maxLines="1"
+        android:focusable="true" />
+
+    <TextView
+        android:id="@+id/repository_open_issues_tv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="@color/fw_charcoal"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:text="@string/repository_open_issues" />
+
+    <TextView
+        android:id="@+id/repository_open_issues_value"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="8dp"
+        android:textColor="@color/fw_charcoal"
+        android:ellipsize="end"
+        android:maxLines="1" />
+
+    <TextView
+        android:id="@+id/repository_default_branch_tv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:textColor="@color/fw_charcoal"
+        android:layout_marginTop="8dp"
+        android:text="@string/repository_default_branch" />
+
+    <TextView
+        android:id="@+id/repository_default_branch_value"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="8dp"
+        android:textColor="@color/fw_charcoal"
+        android:ellipsize="end"
+        android:maxLines="1" />
+
+    <TextView
+        android:id="@+id/repository_readme_tv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="8dp"
+        android:text="@string/read_me_content"
+        android:textColor="@color/fw_charcoal"
+        android:textSize="24sp" />
+
+    <TextView
+        android:id="@+id/repository_readme_value"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginBottom="8dp"
+        android:textColor="@color/fw_charcoal" />
+
+</LinearLayout>
+</ScrollView>

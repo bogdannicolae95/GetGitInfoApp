@@ -42,7 +42,7 @@ public class ApiCallRepository {
         apiCallServices.getReposFromApi("java","stars","desc",page).enqueue(callback);
     }
 
-    public void getReadmeForRepo(final ReadmeResponseCallback readmeResponseCallback, String fullname){
+    public void getReadmeForRepo(final ReadmeResponseCallback readmeResponseCallback, String loginUserName,String repoName){
         Callback<ReadmeResponse> callback = new Callback<ReadmeResponse>() {
             @Override
             public void onResponse(Call<ReadmeResponse> call, Response<ReadmeResponse> response) {
@@ -50,7 +50,7 @@ public class ApiCallRepository {
                     readmeResponseCallback.onSuccess(response.body());
                 }else{
                     readmeResponseCallback.onFail(response.message());
-                }//todo send separate params in header not full name;
+                }
             }
 
             @Override
@@ -58,6 +58,6 @@ public class ApiCallRepository {
                 readmeResponseCallback.onFail(t.getMessage());
             }
         };
-        apiCallServices.getReadmeContentForRepository(fullname).enqueue(callback);
+        apiCallServices.getReadmeContentForRepository(loginUserName,repoName).enqueue(callback);
     }
 }

@@ -1,6 +1,12 @@
 package foodwell.projectsimply.com.getgitinfoapp.common;
 
+import android.os.Build;
+import android.support.annotation.RequiresApi;
+import android.util.Base64;
+
 import java.io.Serializable;
+import java.io.UnsupportedEncodingException;
+import java.nio.charset.StandardCharsets;
 
 public class Repository implements Serializable {
     private int repoId;
@@ -13,8 +19,9 @@ public class Repository implements Serializable {
     private int openIssues;
     private String defaultBranch;
     private String readmeContent;
+    private String repoName;
 
-    public Repository(int repoId, String fullName, String loginName, String repoUrl, int wathers, int forks, int openIssues, String defaultBranch, String readmeContent,int stars) {
+    public Repository(int repoId, String fullName, String loginName, String repoUrl, int wathers, int forks, int openIssues, String defaultBranch, String readmeContent,int stars,String repoName) {
         this.repoId = repoId;
         this.fullName = fullName;
         this.loginName = loginName;
@@ -25,6 +32,7 @@ public class Repository implements Serializable {
         this.defaultBranch = defaultBranch;
         this.readmeContent = readmeContent;
         this.stars =stars;
+        this.repoName = repoName;
     }
 
     public int getRepoId() {
@@ -33,6 +41,14 @@ public class Repository implements Serializable {
 
     public int getStars() {
         return stars;
+    }
+
+    public String getRepoName() {
+        return repoName;
+    }
+
+    public void setRepoName(String repoName) {
+        this.repoName = repoName;
     }
 
     public void setStars(int stars) {
@@ -105,5 +121,12 @@ public class Repository implements Serializable {
 
     public void setReadmeContent(String readmeContent) {
         this.readmeContent = readmeContent;
+    }
+
+
+    public String getDecodeReadmeContent(){
+        byte[] valueDecoded = new byte[0];
+        valueDecoded = Base64.decode(readmeContent.getBytes(StandardCharsets.UTF_8),Base64.DEFAULT);
+        return new String(valueDecoded);
     }
 }

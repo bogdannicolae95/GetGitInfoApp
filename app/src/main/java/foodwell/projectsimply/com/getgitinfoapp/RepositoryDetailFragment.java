@@ -2,23 +2,16 @@ package foodwell.projectsimply.com.getgitinfoapp;
 
 
 import android.app.Dialog;
-import android.app.FragmentTransaction;
 import android.content.Context;
-import android.os.Bundle;
-import android.support.annotation.Nullable;
-import android.support.v4.app.DialogFragment;
-import android.support.v4.app.Fragment;
-import android.view.Gravity;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
+import android.text.Html;
+import android.text.method.LinkMovementMethod;
 import android.view.Window;
 import android.view.WindowManager;
-import android.widget.Button;
 import android.widget.TextView;
-import android.widget.Toolbar;
 
 import foodwell.projectsimply.com.getgitinfoapp.common.Repository;
+
+import static android.text.Html.fromHtml;
 
 
 public class RepositoryDetailFragment  {
@@ -30,14 +23,38 @@ public class RepositoryDetailFragment  {
         dialog.getWindow().setLayout(WindowManager.LayoutParams.MATCH_PARENT, WindowManager.LayoutParams.MATCH_PARENT);
         dialog.setCanceledOnTouchOutside(false);
 
-        TextView repoFullName = dialog.findViewById(R.id.repository_full_name);
-        repoFullName.setText(repository.getFullName());
+        TextView watchersCount = dialog.findViewById(R.id.watchers_count);
+        watchersCount.setText(String.valueOf(repository.getWatchers()));
 
-        TextView repoReadMe = dialog.findViewById(R.id.repository_login_name);
+        TextView starsCount = dialog.findViewById(R.id.stars_count);
+        starsCount.setText(String.valueOf(repository.getStars()));
+
+        TextView forksCount = dialog.findViewById(R.id.forks_count);
+        forksCount.setText(String.valueOf(repository.getForks()));
+
+        TextView repoID = dialog.findViewById(R.id.repository_id_value);
+        repoID.setText(String.valueOf(repository.getRepoId()));
+
+        TextView repoFullName= dialog.findViewById(R.id.repository_full_name_value);
+        repoFullName.setText(String.valueOf(repository.getFullName()));
+
+        TextView repoUserLoginName= dialog.findViewById(R.id.repository_login_name_value);
+        repoUserLoginName.setText(String.valueOf(repository.getLoginName()));
+
+        TextView repoUrl= dialog.findViewById(R.id.repository_url_value);
+        repoUrl.setText(repository.getRepoUrl());
+
+        TextView repoOpenIssues= dialog.findViewById(R.id.repository_open_issues_value);
+        repoOpenIssues.setText(String.valueOf(repository.getOpenIssues()));
+
+        TextView repoDefaultBranch= dialog.findViewById(R.id.repository_default_branch_value);
+        repoDefaultBranch.setText(repository.getDefaultBranch());
+
+        TextView readMeContent = dialog.findViewById(R.id.repository_readme_value);
         if(repository.getReadmeContent() != null && !repository.getReadmeContent().isEmpty()){
-            repoReadMe.setText(repository.getFullName());
+            readMeContent.setText(repository.getDecodeReadmeContent());
         }else{
-            repoReadMe.setText(GetReposInfoApp.getStringRes(R.string.not_readme));
+            readMeContent.setText(GetReposInfoApp.getStringRes(R.string.not_readme));
         }
 
         dialog.show();

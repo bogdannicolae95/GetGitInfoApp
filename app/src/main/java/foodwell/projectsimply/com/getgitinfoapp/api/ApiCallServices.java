@@ -18,7 +18,7 @@ public interface ApiCallServices {
             @Query("order") String desc,
             @Query("page") int page);
 
-    @GET("repos/{full_name}/contents/README.md")
-    Call<ReadmeResponse> getReadmeContentForRepository(@Path("full_name") String fullName);
+    @GET("repos/{login_user_name}/{repo_name}/contents/README.md")
+    Call<ReadmeResponse> getReadmeContentForRepository(@Path("login_user_name") String loginUserName,@Path("repo_name") String repoName);
 
 }

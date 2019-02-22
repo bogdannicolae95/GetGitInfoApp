@@ -40,7 +40,7 @@ public class MainActivitModel {
                 }
                 if (page <= nrOfPages) {
                     for (ItemResponse item : responses.getItems()) {
-                        final Repository currentRep = new Repository(item.getId(), item.getFullName(), item.getOwner().getLogin(), item.getHtmlUrl(), item.getWatchers(), item.getForks(), item.getOpenIssues(), item.getDefaultBranch(), "",item.getStargazersCount());
+                        final Repository currentRep = new Repository(item.getId(), item.getFullName(), item.getOwner().getLogin(), item.getHtmlUrl(), item.getWatchers(), item.getForks(), item.getOpenIssues(), item.getDefaultBranch(), "",item.getStargazersCount(),item.getName());
                         repositoriesList.add(currentRep);
                     }
                     presenterInterface.setListOfRepositories(repositoriesList);
@@ -59,19 +59,23 @@ public class MainActivitModel {
 
    }
 
-   public void getReadmeForSelectedRepository(Repository repository){
-       new ApiCallRepository().getReadmeForRepo(new ReadmeResponseCallback() {
-           @Override
-           public void onSuccess(ReadmeResponse readmeResponse) {
-               repository.setReadmeContent(readmeResponse.getContent());
-               presenterInterface.getReadmeSucces(repository);
-           }
+   public void getReadmeForSelectedRepository(Repository repository) {
+       if (repository.getReadmeContent().isEmpty()){
+           new ApiCallRepository().getReadmeForRepo(new ReadmeResponseCallback() {
+               @Override
+               public void onSuccess(ReadmeResponse readmeResponse) {
+                   repository.setReadmeContent(readmeResponse.getContent());
+                   presenterInterface.getReadmeSucces(repository);
+               }
 
-           @Override
-           public void onFail(String message) {
-               presenterInterface.getReadmeFail(repository);
-           }
-       }, repository.getFullName());
+               @Override
+               public void onFail(String message) {
+                   presenterInterface.getReadmeFail(repository);
+               }
+           }, repository.getLoginName(), repository.getRepoName());
+       }else{
+           presenterInterface.getReadmeSucces(repository);
+       }
    }
 
 

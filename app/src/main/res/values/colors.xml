@@ -4,6 +4,7 @@
     <color name="colorPrimaryDark">#00574B</color>
     <color name="colorAccent">#D81B60</color>
     <color name="charcoal">#B35A5E65</color>
+    <color name="charcoal_opacity">#E65A5E65</color>
     <color name="fw_white">#FFFFFF</color>
     <color name="fw_charcoal">#5A5E65</color>
 </resources>
